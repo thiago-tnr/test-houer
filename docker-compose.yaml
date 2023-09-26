@@ -1,10 +1,21 @@
-version: '3'
+version: '3.8'
 
 services:
   app:
     build: .
     command: ./.docker/start.sh
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - .:/home/node/app
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "MyStrongPassword123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
