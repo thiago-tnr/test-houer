@@ -14,7 +14,6 @@
 - [Uso](#uso)
 - [Rotas e Autenticação](#rotas-e-autenticação)
 - [Licença](#licença)
-- [Contato](#contato)
 
 ## Sobre o Projeto
 
@@ -44,7 +43,7 @@ Certifique-se de ter os seguintes pré-requisitos instalados em sua máquina:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/your-username/minha-aplicacao-fantastica.git
+   git clone https://github.com/thiago-tnr/test-houer.git
 
 2. **Navegue até o diretório do projeto:**
 
@@ -95,11 +94,6 @@ Agora que você configurou o projeto, pode iniciar a aplicação seguindo estas 
 
 Distribuído sob a Licença MIT. Consulte `LICENSE` para obter mais informações.
 
-## Contato
-
-Seu Nome - [@seu-username](https://twitter.com/seu-username)
-
-Link do Projeto: [https://github.com/your-username/minha-aplicacao-fantastica](https://github.com/your-username/minha-aplicacao-fantastica)
 ```
 
 Este é o README completo em português formatado para o GitHub. Certifique-se de personalizar as seções, URLs e informações de contato de acordo com o seu projeto específico. Você também pode adicionar seções adicionais, como "Recursos" ou "Agradecimentos", conforme necessário.
