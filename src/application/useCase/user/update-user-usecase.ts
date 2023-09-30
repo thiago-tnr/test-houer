@@ -1,16 +1,14 @@
-import AppError from '../../../@seedwork/errors/app-error';
-import { UseCase } from '../../../@seedwork/interfaces/usecase-interface';
-import { UserProps } from '../../../domain/user/entity/user';
-import UserRepositoryInterface from '../../../infrastructure/user/repository/user-interface.repository';
+import { type UseCase } from '../../../@seedwork/interfaces/usecase-interface'
+import { type UserProps } from '../../../domain/user/entity/user'
+import type UserRepositoryInterface from '../../../infrastructure/user/repository/user-interface.repository'
 
 type UserPropsToUpdate = Partial<UserProps> | null
 type UpdateUsersProps = { user: UserPropsToUpdate, user_id: string }
 export class UpdateUserUseCase implements UseCase {
-  constructor(private readonly repository: UserRepositoryInterface) { }
-  async execute(data: UpdateUsersProps): Promise<UserPropsToUpdate> {
-    const findUser = await this.repository.find(data.user_id!)
-    console.log(findUser)
-    if(!findUser) return null
+  constructor (private readonly repository: UserRepositoryInterface) { }
+  async execute (data: UpdateUsersProps): Promise<UserPropsToUpdate> {
+    const findUser = await this.repository.find(data.user_id)
+    if (!findUser) return null
 
     findUser.updated_at = new Date()
     findUser.changeName(data.user!.name ?? findUser.name)
@@ -31,5 +29,4 @@ export class UpdateUserUseCase implements UseCase {
       updated_at: findUser.updated_at
     }
   }
-
 }

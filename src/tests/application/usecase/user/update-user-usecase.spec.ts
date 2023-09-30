@@ -1,6 +1,6 @@
 import { CreateUserUseCase } from '../../../../application/useCase/user/create-user-usecase'
 import { UpdateUserUseCase } from '../../../../application/useCase/user/update-user-usecase'
-import { UserProps } from '../../../../domain/user/entity/user'
+import { type UserProps } from '../../../../domain/user/entity/user'
 import { MockUserRepository } from '../../../factory/repository'
 import { CreateUserFactory } from '../../../factory/user-create-factory'
 
@@ -10,14 +10,15 @@ describe('UpdateUserUseCase', () => {
   it('should update a user successfully', async () => {
     const userToUpdate: Partial<UserProps> = {
       user_id: userId,
-      name: 'Updated Name',
+      name: 'Updated Name'
     }
     const mockUser = CreateUserFactory.create()
-    mockUserRepository.create(mockUser)
+    await mockUserRepository.create(mockUser)
+    // eslint-disable-next-line no-new
     new CreateUserUseCase(mockUserRepository)
     const updateUserUseCase = new UpdateUserUseCase(mockUserRepository)
-    
-    const updatedUser = await updateUserUseCase.execute({ user: userToUpdate, user_id: mockUser.id })
+
+    const updatedUser = await updateUserUseCase.execute({ user: userToUpdate, user_id: mockUser._id })
 
     expect(updatedUser).toMatchObject({
       name: 'Updated Name'
@@ -26,7 +27,7 @@ describe('UpdateUserUseCase', () => {
 
   it('should throw an error if user update fails', async () => {
     const create = jest.spyOn(mockUserRepository, 'update')
-    .mockRejectedValue(new Error("Cannot find a User"))
+      .mockRejectedValue(new Error('Cannot find a User'))
     await expect(create).rejects.toThrow('Cannot find a User')
   })
 })

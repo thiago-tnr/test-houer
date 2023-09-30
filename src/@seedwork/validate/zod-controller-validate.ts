@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const GetEntityId = z.string().length(36)
 
@@ -8,7 +8,6 @@ export const LoginValidate = z.object({
 })
 
 export const EnrollValidate = z.object({
-  user_id: z.string(),
   vacancy_id: z.string()
 })
 
@@ -21,7 +20,7 @@ export const CreateUserSchema = z.object({
   document: z.string(),
   is_admin: z.boolean().optional(),
   created_at: z.date().optional()
-});
+})
 export const UpdateUserSchema = z.object({
   id: z.string().optional(),
   name: z.string().min(3).optional(),
@@ -30,8 +29,7 @@ export const UpdateUserSchema = z.object({
   document: z.string().optional(),
   is_admin: z.boolean().optional(),
   updated_at: z.date().optional()
-});
-
+})
 
 export const CreateVacancySchema = z.object({
   id: z.string().optional(),

@@ -1,7 +1,7 @@
 import AppError from '../../../@seedwork/errors/app-error'
-import { UseCase } from '../../../@seedwork/interfaces/usecase-interface'
-import { UserProps } from '../../../domain/user/entity/user'
-import UserRepositoryInterface from '../../../infrastructure/user/repository/user-interface.repository'
+import { type UseCase } from '../../../@seedwork/interfaces/usecase-interface'
+import { type UserProps } from '../../../domain/user/entity/user'
+import type UserRepositoryInterface from '../../../infrastructure/user/repository/user-interface.repository'
 
 interface InputUseCaseCreateUser {
   user_id: string
@@ -16,9 +16,10 @@ interface InputUseCaseCreateUser {
 }
 
 export class CreateUserUseCase implements UseCase {
-  constructor(private readonly repository: UserRepositoryInterface) { }
-  async execute(entity: InputUseCaseCreateUser): Promise<UserProps> {
+  constructor (private readonly repository: UserRepositoryInterface) { }
+  async execute (entity: InputUseCaseCreateUser): Promise<UserProps> {
     const checkEmail = await this.repository.findByEmail(entity.email)
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
     if (checkEmail) throw new AppError('Email already exists', 409)
     const created = await this.repository.create(entity)
     if (!created) throw new Error('Not possible to create a user')

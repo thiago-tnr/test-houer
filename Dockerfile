@@ -1,8 +1,5 @@
-FROM --platform=linux node:18
-USER node
+FROM node:18
 COPY package*.json ./
 COPY . .
-
-WORKDIR /home/node/app
-
+WORKDIR /app
 CMD ["tail", "-f", "/dev/null"]

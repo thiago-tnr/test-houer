@@ -10,7 +10,7 @@ import { DeleteUserUseCase } from '../../../application/useCase/user/delete-user
 import { FindUserUseCase } from '../../../application/useCase/user/find-user-usecase'
 import { FindAllUsersUseCase } from '../../../application/useCase/user/findAll-user-usecase'
 import { UpdateUserUseCase } from '../../../application/useCase/user/update-user-usecase'
-import { userRepository, vacanciesRepository } from './repository-dependency'
+import { userRepository } from './repository-dependency'
 
 const createUserUseCase = new CreateUserUseCase(userRepository)
 export const createUserController = new CreateUserController(createUserUseCase)

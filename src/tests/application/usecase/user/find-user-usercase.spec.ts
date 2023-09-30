@@ -10,9 +10,9 @@ describe('FindUserUseCase', () => {
     userRepository.find = jest.fn().mockResolvedValue(mockUser)
 
     const findUserUseCase = new FindUserUseCase(userRepository)
-    const foundUser = await findUserUseCase.execute(mockUser.user_id!)
+    const foundUser = await findUserUseCase.execute(mockUser._id!)
 
-    expect(userRepository.find).toHaveBeenCalledWith(mockUser.user_id!)
+    expect(userRepository.find).toHaveBeenCalledWith(mockUser._id!)
     expect(foundUser).toEqual(mockUser)
   })
 
@@ -20,9 +20,9 @@ describe('FindUserUseCase', () => {
     userRepository.find = jest.fn().mockResolvedValue(null)
 
     const findUserUseCase = new FindUserUseCase(userRepository)
-    const foundUser = await findUserUseCase.execute(mockUser.user_id!)
+    const foundUser = await findUserUseCase.execute(mockUser._id!)
 
-    expect(userRepository.find).toHaveBeenCalledWith(mockUser.user_id!)
+    expect(userRepository.find).toHaveBeenCalledWith(mockUser._id!)
     expect(foundUser).toBeNull()
   })
 })

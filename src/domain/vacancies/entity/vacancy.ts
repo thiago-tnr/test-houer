@@ -24,7 +24,7 @@ export default class Vacancies extends Entity<VacanciesProps> {
 
   constructor(props: VacanciesProps, id?: UniqueEntityId) {
     super(props, id)
-    this.vacancy_id = this.id ?? id
+    this.vacancy_id = this._id ?? id
     this.title = props.title
     this.requirements = props.requirements
     this.type = props.type

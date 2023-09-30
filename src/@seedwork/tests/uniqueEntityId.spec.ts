@@ -1,4 +1,3 @@
-import InvalidUuidError from '../errors/invalid-uuid.error'
 import UniqueEntityId from '../uniqueEntityId.vo'
 import { validate as uuidValidate } from 'uuid'
 describe('Unique Entity Id', () => {
@@ -17,5 +16,4 @@ describe('Unique Entity Id', () => {
     const isValid = uuidValidate(uuid.id!)
     expect(isValid).toBeFalsy()
   })
-
 })

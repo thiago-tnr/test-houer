@@ -25,7 +25,7 @@ export default class User extends Entity<UserProps> {
   updated_at: Date | null
   constructor(props: UserProps, id?: UniqueEntityId) {
     super(props, id)
-    this.user_id = this.id ?? id
+    this.user_id = this._id ?? id
     this.name = props.name
     this.document = props.document
     this.phone = props.phone

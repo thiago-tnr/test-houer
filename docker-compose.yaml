@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/home/node/app
+      - .:/app
     depends_on:
       - sqlserver
 

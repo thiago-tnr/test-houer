@@ -1,16 +1,15 @@
-import { PrismaClient } from '@prisma/client';
-import Vacancies, { VacanciesProps } from '../../../domain/vacancies/entity/vacancy';
-import VacanciesRepositoryInterface from './vacancies-interface.repository';
-import UniqueEntityId from '../../../@seedwork/uniqueEntityId.vo';
+import { type PrismaClient } from '@prisma/client'
+import Vacancies, { type VacanciesProps } from '../../../domain/vacancies/entity/vacancy'
+import type VacanciesRepositoryInterface from './vacancies-interface.repository'
+import type UniqueEntityId from '../../../@seedwork/uniqueEntityId.vo'
 
 type CreateVacancies = VacanciesProps
 export class VacanciesRepository implements VacanciesRepositoryInterface {
-  constructor(
+  constructor (
     private readonly prisma: PrismaClient) { }
 
-  async create(entity: CreateVacancies): Promise<VacanciesProps> {
+  async create (entity: CreateVacancies): Promise<VacanciesProps> {
     const { ...props } = Vacancies.create(entity)
-    console.log(props)
     const obj = await this.prisma.vacancy.create({
       data: {
         id: props.vacancy_id!,
@@ -24,10 +23,11 @@ export class VacanciesRepository implements VacanciesRepositoryInterface {
     })
     return obj
   }
-  async update(entity: VacanciesProps): Promise<void> {
+
+  async update (entity: VacanciesProps): Promise<void> {
     await this.prisma.vacancy.update({
       where: {
-        id: entity.vacancy_id,
+        id: entity.vacancy_id
       },
       data: {
         id: entity.vacancy_id,
@@ -40,19 +40,21 @@ export class VacanciesRepository implements VacanciesRepositoryInterface {
       }
     })
   }
-  async delete(vacancy_id: string): Promise<string> {
+
+  async delete (vacancy_id: string): Promise<string> {
     try {
       await this.prisma.vacancy.delete({
         where: {
-          id: vacancy_id,
-        },
+          id: vacancy_id
+        }
       })
     } catch (error) {
       return 'Vacancy already deleted'
     }
     return new Date() as unknown as string
   }
-  async find(vacancy_id: string): Promise<Vacancies | null> {
+
+  async find (vacancy_id: string): Promise<Vacancies | null> {
     let findVacancy
     try {
       findVacancy = await this.prisma.vacancy.findFirst({
@@ -63,19 +65,20 @@ export class VacanciesRepository implements VacanciesRepositoryInterface {
     } catch (error) {
       console.log(error)
     }
-    if (findVacancy === null) return null
-    const vacancy = new Vacancies(findVacancy!, vacancy_id as unknown as UniqueEntityId)
+    if (findVacancy === null || !findVacancy?.is_active) return null
+    const vacancy = new Vacancies(findVacancy, vacancy_id as unknown as UniqueEntityId)
     return vacancy
   }
-  async findAll(): Promise<VacanciesProps[]> {
+
+  async findAll (): Promise<VacanciesProps[]> {
     return await this.prisma.vacancy.findMany()
   }
 
-  async findByEmail(email: string): Promise<Vacancies> {
-    throw new Error('Method not implemented.');
+  async findByEmail (email: string): Promise<Vacancies> {
+    throw new Error('Method not implemented.')
   }
 
-  enroll(user_id: string, vacancy_id: string): Promise<string> {
-    throw new Error('Method not implemented.');
+  enroll (user_id: string, vacancy_id: string): Promise<string> {
+    throw new Error('Method not implemented.')
   }
 }

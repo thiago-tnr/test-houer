@@ -1,5 +1,5 @@
 
-import Vacancies, { VacanciesProps } from '../../../domain/vacancies/entity/vacancy'
+import Vacancies, { type VacanciesProps } from '../../../domain/vacancies/entity/vacancy'
 
 describe('Vacancies', () => {
   it('should create an instance of Vacancies', () => {
@@ -7,7 +7,7 @@ describe('Vacancies', () => {
       title: 'Full Stack Developer',
       description: 'Job description',
       requirements: 'Job requirements',
-      type: 'Full-Time',
+      type: 'Full-Time'
     }
 
     const vacancy = Vacancies.create(props)
@@ -25,7 +25,7 @@ describe('Vacancies', () => {
       title: 'Full Stack Developer',
       description: 'Job description',
       requirements: 'Job requirements',
-      type: 'Full-Time',
+      type: 'Full-Time'
     }
 
     const vacancy = Vacancies.create(props)
@@ -39,7 +39,7 @@ describe('Vacancies', () => {
       title: 'Full Stack Developer',
       description: 'Job description',
       requirements: 'Job requirements',
-      type: 'Full-Time',
+      type: 'Full-Time'
     }
 
     const vacancy = Vacancies.create(props)
@@ -53,7 +53,7 @@ describe('Vacancies', () => {
       title: 'Full Stack Developer',
       description: 'Job description',
       requirements: 'Job requirements',
-      type: 'Full-Time',
+      type: 'Full-Time'
     }
 
     const vacancy = Vacancies.create(props)
