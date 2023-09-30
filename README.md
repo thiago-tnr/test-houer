@@ -44,6 +44,7 @@ Certifique-se de ter os seguintes pré-requisitos instalados em sua máquina:
 
    ```bash
    git clone https://github.com/thiago-tnr/test-houer.git
+      ```
 
 2. **Navegue até o diretório do projeto:**
 
@@ -75,6 +76,8 @@ Agora que você configurou o projeto, pode iniciar a aplicação seguindo estas 
    ```
 
 3. **Inicie o servidor de desenvolvimento:**
+
+   Não se esqueça de criar um arvquivo .env usando o .env.example
 
    ```bash
    npm run dev
