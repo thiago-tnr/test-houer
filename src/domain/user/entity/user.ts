@@ -1,5 +1,5 @@
-import { Entity } from '../../../@seedwork';
-import UniqueEntityId from '../../../@seedwork/uniqueEntityId.vo';
+import { Entity } from '../../../@seedwork'
+import type UniqueEntityId from '../../../@seedwork/uniqueEntityId.vo'
 
 export interface UserProps {
   user_id?: string
@@ -23,7 +23,7 @@ export default class User extends Entity<UserProps> {
   is_admin: boolean
   created_at?: Date
   updated_at: Date | null
-  constructor(props: UserProps, id?: UniqueEntityId) {
+  constructor (props: UserProps, id?: UniqueEntityId) {
     super(props, id)
     this.user_id = this._id ?? id
     this.name = props.name
@@ -36,35 +36,35 @@ export default class User extends Entity<UserProps> {
     this.updated_at = props.updated_at ?? null
   }
 
-  changeName(name: string) {
+  changeName (name: string): void {
     this.name = name
   }
 
-  changeDocument(document: string) {
+  changeDocument (document: string): void {
     this.document = document
   }
 
-  changePhone(phone: string) {
+  changePhone (phone: string): void {
     this.phone = phone
   }
 
-  changeEmail(email: string) {
+  changeEmail (email: string): void {
     this.email = email
   }
 
-  changePassword(password: string) {
+  changePassword (password: string): void {
     this.password = password
   }
 
-  adminActivate() {
+  adminActivate (): void {
     this.is_admin = true
   }
 
-  adminDeactivate() {
+  adminDeactivate (): void {
     this.is_admin = false
   }
 
-  static create(props: UserProps, id?: UniqueEntityId): User {
+  static create (props: UserProps, id?: UniqueEntityId): User {
     return new User(props, id!)
   }
 }
