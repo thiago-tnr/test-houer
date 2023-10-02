@@ -100,6 +100,8 @@ Agora que você configurou o projeto, pode iniciar a aplicação seguindo estas 
 
 - Os usuários precisam estar logados para realizar ações nas rotas de usuário, exceto para criar novos usuários.
 
+- Não é necessário para o id do usuário na rota de se candidatar a uma vaga, o id será pego do token.
+
 ## Licença
 
 Distribuído sob a Licença MIT. Consulte `LICENSE` para obter mais informações.
