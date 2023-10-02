@@ -85,6 +85,13 @@ Agora que você configurou o projeto, pode iniciar a aplicação seguindo estas 
 
    A aplicação estará disponível em `http://localhost:3000`.
 
+4. **configurando o DB:**
+
+   Não se esqueça de configurar o DB com base no .env.example usando a variável abaixo
+
+   ```bash
+   LOCAL_DB
+   ```
 ## Rotas e Autenticação
 
 - A rota para criar, atualizar e excluir vagas de emprego está disponível apenas para usuários administradores (admin).
